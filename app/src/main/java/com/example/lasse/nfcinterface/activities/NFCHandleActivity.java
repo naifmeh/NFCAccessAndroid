@@ -18,9 +18,8 @@ import com.example.lasse.nfcinterface.R;
 import com.example.lasse.nfcinterface.utils.ParseNFC;
 
 public class NFCHandleActivity extends AppCompatActivity {
-    private final static String TAG = NFCHandleActivity.class.getSimpleName();
-
     public final static String UID_DETECTED_STRING = "121545856";
+    private final static String TAG = NFCHandleActivity.class.getSimpleName();
     public final static String NFCCLASS_ID_CALLING = TAG;
     private TextView uidScanned;
     @Override
@@ -41,7 +40,7 @@ public class NFCHandleActivity extends AppCompatActivity {
                 Intent intentDb = new Intent(NFCHandleActivity.this,MainActivity.class);
 
                 ParseNFC parser = new ParseNFC(lowid);
-                String uidstr = parser.uidHexToStr();
+                String uidstr = parser.uidHexToStr(lowid);
                 intentDb.putExtra(UID_DETECTED_STRING,uidstr);
                 intentDb.putExtra(NFCCLASS_ID_CALLING,TAG);
 

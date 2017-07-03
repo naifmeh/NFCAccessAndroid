@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_add_usr"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.lasse.nfcinterface.activities.AddCardActivity">
+
+
+
+
+    
+    <com.example.lasse.nfcinterface.views.PulsatingView
+        android:id="@+id/pulseContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+
+        >
+        <TextView
+            android:id="@+id/scanningText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/waintingCard"
+            android:textSize="40sp"
+             />
+
+    </com.example.lasse.nfcinterface.views.PulsatingView>
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:id="@+id/container_form_addUsr"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_uid_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/editTextAddUsrMargin"
+
+            >
+            <EditText
+                android:id="@+id/input_uid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/addUsrUID"
+                tools:text="UID"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_name_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/editTextAddUsrMargin"
+
+            >
+            <EditText
+                android:id="@+id/input_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/addUsrName"
+                tools:text="Name"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_lname_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/editTextAddUsrMargin"
+
+            >
+            <EditText
+                android:id="@+id/input_lname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/addUsrLastName"
+                tools:text="Last Name"/>
+        </android.support.design.widget.TextInputLayout>
+
+
+        <Spinner
+            android:id="@+id/rankSpinnerUsr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/editTextAddUsrMargin"
+
+            />
+
+        <Button
+            android:id="@+id/btnAddUsr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/editTextAddUsrMargin"
+            android:background="@color/colorPrimary"
+            android:text="@string/addUsrBtn"
+            android:textColor="@android:color/white"/>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+    
+</android.support.design.widget.CoordinatorLayout>

@@ -28,25 +28,29 @@
         <activity
             android:name=".activities.NFCHandleActivity"
             android:label="@string/title_activity_nfchandle"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:launchMode="singleTop">
-
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.nfc.action.TECH_DISCOVERED" />
-                <category android:name="android.intent.category.DEFAULT"/>/>
+
+                <category android:name="android.intent.category.DEFAULT" />
+                />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.nfc.action.TECH_DISCOVERED" />
             </intent-filter>
             <intent-filter>
                 <category android:name="android.intent.category.ALTERNATIVE" />
-                <action android:name="android.nfc.action.TAG_DISCOVERED"/>
+
+                <action android:name="android.nfc.action.TAG_DISCOVERED" />
             </intent-filter>
-            <meta-data android:name="android.nfc.action.TECH_DISCOVERED"
+
+            <meta-data
+                android:name="android.nfc.action.TECH_DISCOVERED"
                 android:resource="@xml/nfc_list_filter" />
-
-
         </activity>
+        <activity android:name=".activities.AddCardActivity" />
+        <activity android:name=".activities.DatabaseDisplayActivity"></activity>
     </application>
 
 </manifest>

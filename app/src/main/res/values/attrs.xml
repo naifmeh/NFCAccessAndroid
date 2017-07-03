@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PulsatingView">
+        <attr name="ps_color" format="color" />
+        <attr name="ps_strokeWidth" format="dimension"/>
+        <attr name="ps_radius" format="dimension"/>
+        <attr name="ps_duration" format="integer"/>
+        <attr name="ps_rippleAmount" format="integer"/>
+        <attr name="ps_scale" format="float"/>
+        <attr name="ps_type" format="enum">
+            <enum name="fillPulse" value="0"/>
+            <enum name="strokePulse" value="1"/>
+        </attr>
+    </declare-styleable>
+</resources>

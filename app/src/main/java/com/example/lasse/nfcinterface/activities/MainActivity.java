@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
+
+
     private TextView responseTextView;
     private Button buttonUid,buttonNFC;
     private EditText uidTextField;
@@ -79,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(MainActivity.this,AddCardActivity.class));
             }
         });
         responseTextView.setText("WAITING");

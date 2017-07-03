@@ -6,8 +6,8 @@ package com.example.lasse.nfcinterface.utils;
 
 public class ParseNFC {
 
-    private byte[] uid;
     private final static char[] hexArray = "0123456789ABCDEF".toCharArray();
+    private byte[] uid;
     public ParseNFC() {
 
     }
@@ -15,7 +15,8 @@ public class ParseNFC {
         this.uid = id;
     }
 
-    public String uidHexToStr() {
+    public String uidHexToStr(byte[] uid) {
+        this.uid = uid;
         char[] hexChars = new char[this.uid.length * 2];
         for ( int j = 0; j < this.uid.length; j++ ) {
             int v = this.uid[j] & 0xFF;

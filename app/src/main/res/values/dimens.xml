@@ -10,4 +10,13 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="profile_width">75dp</dimen>
     <dimen name="profile_height">75dp</dimen>
+
+    <dimen name="textWaitingCardMargin">20dp</dimen>
+    <dimen name="editTextAddUsrMargin">15dp</dimen>
+    <dimen name="pulseStrokeWidth">2dp</dimen>
+    <dimen name="pulseRadius">64dp</dimen>
+
+    <dimen name="titleMargin">15dp</dimen>
+    <dimen name="recyclerViewMargin">16dp</dimen>
+    <dimen name="titleSize">33sp</dimen>
 </resources>
