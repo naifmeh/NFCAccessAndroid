@@ -1,5 +1,7 @@
 package com.example.lasse.nfcinterface;
 
+import com.example.lasse.nfcinterface.network.NetworkUtils;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -14,4 +16,5 @@ public class ExampleUnitTest {
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
     }
+
 }

@@ -2,6 +2,8 @@
     <string name="app_name">NFCInterface</string>
     <string name="title_activity_drawer">NFC MENU</string>
 
+    <string name="sharedPrefsKey">5758875</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="openDrawer">open_drawer</string>
@@ -24,6 +26,17 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_nfchandle">NFCHandleActivity</string>
 
+    <!-- MAIN ACT -->
+    <string name="signIn">SIGN IN</string>
+    <string name="scanKey">Scan card...</string>
+    <string name="lastNameSignIn">Last name</string>
+    <string name="confirmSignIn">Sign in</string>
+    <string name="userNotFound">User not found</string>
+    <string name="welcomeUser">Welcome</string>
+
+    <!-- PROFILE -->
+    <string name="uidTitle">UID</string>
+
     <!-- STRINGS FOR ADDING -->
 
     <string name="waintingCard">Scanning</string>
@@ -45,4 +58,11 @@
 
 
     <string name="databaseDisplayTitle">Users in database</string>
+
+    <string name="rankDisplayRecycler">Rank</string>
+    <string name="userDeletedSnackbar">User deleted</string>
+    <string name="undoSnackBar">Undo</string>
+    <string name="noUserInDb">No users found in the database</string>
+
+    <string name="addCardActivityName">Manage users</string>
 </resources>

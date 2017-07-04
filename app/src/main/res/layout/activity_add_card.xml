@@ -9,8 +9,16 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.lasse.nfcinterface.activities.AddCardActivity">
 
-
-
+    <android.support.v7.widget.Toolbar
+    android:id="@+id/toolbarAddingCard"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/colorPrimary"
+    android:elevation="4dp"
+    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    app:title="@string/addCardActivityName"
+    app:titleTextColor="@android:color/white"/>
 
     
     <com.example.lasse.nfcinterface.views.PulsatingView

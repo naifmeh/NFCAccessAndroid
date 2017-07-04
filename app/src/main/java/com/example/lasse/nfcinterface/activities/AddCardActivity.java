@@ -8,9 +8,11 @@ import android.nfc.Tag;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutCompat;
+import android.support.v7.widget.Toolbar;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.util.Log;
@@ -60,8 +62,10 @@ public class AddCardActivity extends AppCompatActivity implements NetworkUtils.R
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_card);
-
-
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbarAddingCard);
+        setSupportActionBar(myToolbar);
+        ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -147,6 +151,10 @@ public class AddCardActivity extends AppCompatActivity implements NetworkUtils.R
         else Snackbar.make(coordinatorLayout,getResources().getString(R.string.snackbar_usr_failed),Snackbar.LENGTH_LONG).show();
     }
 
+    @Override
+    public void reponseHttpGetAllRequete(JSONObject jObj) {
+
+    }
 
 
     private class MyNfcListener implements NfcAdapter.ReaderCallback {
