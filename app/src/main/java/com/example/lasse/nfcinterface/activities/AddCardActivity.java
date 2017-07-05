@@ -2,6 +2,9 @@ package com.example.lasse.nfcinterface.activities;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Network;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
@@ -23,6 +26,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.lasse.nfcinterface.R;
 import com.example.lasse.nfcinterface.network.NetworkUtils;
@@ -43,7 +47,7 @@ public class AddCardActivity extends AppCompatActivity implements NetworkUtils.R
     private PulsatingView pulsatingView;
     private TextView scanningText;
     private EditText inputUID,inputName,inputLName;
-    private TextInputLayout inputLayoutUID,inputLayoutName,inputLayoutLName;
+
     private Spinner rankChooserSpinner;
     private Button btnAddUsr;
 
@@ -53,9 +57,10 @@ public class AddCardActivity extends AppCompatActivity implements NetworkUtils.R
 
     private NfcAdapter nfcAdapter;
 
+    private SharedPreferences sharedPreferences;
 
-    private String foundUid;
-    private boolean isCardScanned;
+    private int rankUser;
+
 
 
     @Override
@@ -66,6 +71,19 @@ public class AddCardActivity extends AppCompatActivity implements NetworkUtils.R
         setSupportActionBar(myToolbar);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
+
+        sharedPreferences = getSharedPreferences(getString(R.string.sharedPrefsKey), Context.MODE_PRIVATE);
+        if(sharedPreferences == null && !sharedPreferences.contains(NetworkUtils.UID_FIELD))
+            startActivity(new Intent(AddCardActivity.this,MainActivity.class));
+
+        this.rankUser = sharedPreferences.getInt(NetworkUtils.RANK_FIELD,-1);
+        Log.d(TAG,"USER RANK : "+String.valueOf(rankUser));
+        if(this.rankUser<2)  {
+            Log.d(TAG,"ERROR USER NOT PRIVLIGED");
+            Toast.makeText(this,getString(R.string.errorPrivilege),Toast.LENGTH_LONG).show();
+            startActivity(new Intent(AddCardActivity.this,ProfileActivity.class));
+
+        }
     }
 
     @Override
@@ -78,13 +96,20 @@ public class AddCardActivity extends AppCompatActivity implements NetworkUtils.R
         inputUID =(EditText) findViewById(R.id.input_uid);
         inputName = (EditText) findViewById(R.id.input_name);
         inputLName = (EditText) findViewById(R.id.input_lname);
-        inputLayoutUID = (TextInputLayout) findViewById(R.id.input_uid_layout);
-        inputLayoutName = (TextInputLayout) findViewById(R.id.input_name_layout);
-        inputLayoutLName = (TextInputLayout) findViewById(R.id.input_lname_layout);
         rankChooserSpinner = (Spinner) findViewById(R.id.rankSpinnerUsr);
         btnAddUsr = (Button) findViewById(R.id.btnAddUsr);
 
-        ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this,R.array.addUsrRank,android.R.layout.simple_spinner_item);
+
+        ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this,R.array.addUsrRanklvl0,android.R.layout.simple_spinner_item);;
+        switch (this.rankUser) {
+            case 2:
+                spinnerAdapter = ArrayAdapter.createFromResource(this,R.array.addUsrRanklvl2,android.R.layout.simple_spinner_item);
+                break;
+            case 3:
+                spinnerAdapter = ArrayAdapter.createFromResource(this,R.array.addUsrRanklvl3,android.R.layout.simple_spinner_item);
+                break;
+        }
+
 
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         rankChooserSpinner.setAdapter(spinnerAdapter);
@@ -169,7 +194,7 @@ public class AddCardActivity extends AppCompatActivity implements NetworkUtils.R
 
         }
         private void cardDiscovered(byte[] uid) {
-            isCardScanned = true;
+
 
             ParseNFC parser = new ParseNFC();
             final String strUid = parser.uidHexToStr(uid);

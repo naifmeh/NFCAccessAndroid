@@ -1,6 +1,8 @@
 package com.example.lasse.nfcinterface.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.provider.ContactsContract;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.LoaderManager;
@@ -16,9 +18,11 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.lasse.nfcinterface.R;
 import com.example.lasse.nfcinterface.network.NetworkUtils;
+import com.example.lasse.nfcinterface.utils.SharedPrefsHelper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,8 +41,10 @@ public class DatabaseDisplayActivity extends AppCompatActivity implements Networ
     private MyRecyclerAdapter mAdapter;
     private ProgressBar progressBar;
 
+    private SharedPreferences sharedPreferences;
 
-    private boolean userDeleted = false;
+    private int userRank;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +53,16 @@ public class DatabaseDisplayActivity extends AppCompatActivity implements Networ
         setContentView(R.layout.activity_database_display);
         progressBar = (ProgressBar) findViewById(R.id.progressBarDatabaseFetch);
 
+        sharedPreferences = SharedPrefsHelper.getSharedPrefs(this,getString(R.string.sharedPrefsKey),Context.MODE_PRIVATE);
+        if(sharedPreferences == null && !sharedPreferences.contains(NetworkUtils.UID_FIELD))
+            startActivity(new Intent(DatabaseDisplayActivity.this,MainActivity.class));
 
+        this.userRank = SharedPrefsHelper.getRank();
+        if(this.userRank == -1) startActivity(new Intent(DatabaseDisplayActivity.this,MainActivity.class));
+        else if(this.userRank < 1) {
+            Toast.makeText(this,getString(R.string.errorPrivilege),Toast.LENGTH_LONG).show();
+            startActivity(new Intent(DatabaseDisplayActivity.this,ProfileActivity.class));
+        }
 
         URL url = NetworkUtils.getUrlForGetAll();
         NetworkUtils.sendGetAllUsersRequest(this,url,this);
@@ -108,8 +123,7 @@ public class DatabaseDisplayActivity extends AppCompatActivity implements Networ
 
     @Override
     public void reponseHttpDeleteUser(int reponse) {
-        if(reponse == 0) this.userDeleted=true;
-        else this.userDeleted = false;
+
     }
 
     private class MyViewHolder extends RecyclerView.ViewHolder {

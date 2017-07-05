@@ -36,6 +36,10 @@
 
     <!-- PROFILE -->
     <string name="uidTitle">UID</string>
+    <string name="nameTitle">NAME</string>
+    <string name="lastNameTitle">LAST NAME</string>
+    <string name="rankTitle">RANK</string>
+    <string name="errorNotConnected">NOT CONNECTED</string>
 
     <!-- STRINGS FOR ADDING -->
 
@@ -49,12 +53,22 @@
     <string name="snackbar_usr_failed">Failed to add user</string>
     <string name="snackbar_usr_conflict">User already in database</string>
 
-    <string-array name="addUsrRank">
+    <string-array name="addUsrRanklvl3">
         <item>0</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
     </string-array>
+    <string-array name="addUsrRanklvl2">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="addUsrRanklvl0">
+        <item>-1</item>
+    </string-array>
+
+    <string name="errorPrivilege">You don\'t have the nescessary privileges</string>
+
 
 
     <string name="databaseDisplayTitle">Users in database</string>
@@ -65,4 +79,12 @@
     <string name="noUserInDb">No users found in the database</string>
 
     <string name="addCardActivityName">Manage users</string>
+
+    <string name="serviceApduDescription">Handle PTI AID</string>
+    <string name="aidDescription">081A2B5C6F</string>
+    <string name="activity_into">Reader mode active</string>
+    <string name="aiddescription">aiddescription</string>
+    <string name="servicedesc">servicedesc</string>
+
+
 </resources>

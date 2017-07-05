@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/darker_gray"
+
     tools:context="com.example.lasse.nfcinterface.activities.ProfileActivity">
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,10 +23,11 @@
             app:title="@string/app_name"
             app:titleTextColor="@android:color/white"/>
 
-        <FrameLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2">
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            >
 
             <TextView
                 android:id="@+id/uidTitle"
@@ -33,18 +35,125 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="22dp"
                 android:text="@string/uidTitle"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="33sp"
                 android:textStyle="bold"/>
             <TextView
+                android:id="@+id/uidProfileField"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toBottomOf="@id/uidTitle"
+                android:layout_above="@id/uidTitle"
+                android:layout_alignBottom="@id/uidTitle"
+                android:layout_toEndOf="@id/uidTitle"
                 android:textSize="25sp"
                 tools:text="0c32d55e"
                 />
 
+            <TextView
+                android:id="@+id/nameTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@id/uidTitle"
 
-        </FrameLayout>
+                android:layout_below="@id/uidTitle"
+                android:text="@string/nameTitle"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="33sp"
+                android:textStyle="bold"
+
+                />
+
+            <TextView
+                android:id="@+id/nameProfileField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/nameTitle"
+                android:layout_below="@id/uidProfileField"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@id/nameTitle"
+                android:textSize="25sp"
+                tools:text="Mehanna"/>
+
+            <TextView
+                android:id="@+id/lastNameTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@id/nameTitle"
+                android:layout_below="@id/nameTitle"
+                android:layout_marginTop="22dp"
+                android:text="@string/lastNameTitle"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="33sp"
+                android:textStyle="bold"
+
+                />
+
+            <TextView
+                android:id="@+id/lastNameProfileField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/lastNameTitle"
+                android:layout_below="@id/nameProfileField"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@id/lastNameTitle"
+                android:textSize="25sp"
+                tools:text="Naif"/>
+            <TextView
+                android:id="@+id/rankTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lastNameTitle"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="22dp"
+                android:text="@string/rankTitle"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="33sp"
+                android:textStyle="bold"
+
+                />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rankTitle"
+        android:layout_centerHorizontal="true">
+            <ImageView
+                android:id="@+id/oneStarImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_star_rate_black_18dp"
+                android:visibility="gone"
+            />
+            <ImageView
+                android:id="@+id/twoStarImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rankTitle"
+                android:layout_toRightOf="@id/oneStarImg"
+                android:src="@drawable/ic_star_rate_black_18dp"
+                android:visibility="gone"
+                />
+            <ImageView
+                android:id="@+id/threeStarImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rankTitle"
+                android:layout_toRightOf="@id/twoStarImg"
+                android:src="@drawable/ic_star_rate_black_18dp"
+                android:visibility="gone"
+                />
+            <ImageView
+                android:id="@+id/fourStarImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rankTitle"
+                android:layout_toRightOf="@id/threeStarImg"
+                android:src="@drawable/ic_star_rate_black_18dp"
+                android:visibility="gone"
+                />
+    </LinearLayout>
+
+        </RelativeLayout>
+<!-- TODO HANDLE SCROLLBAR -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -56,6 +165,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+
             app:srcCompat="@drawable/ic_add_black_24dp" />
 
         <ImageButton
@@ -71,6 +181,13 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             app:srcCompat="@drawable/ic_nfc_black_24dp"/>
+
+        <ImageButton
+            android:id="@+id/logOutButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:srcCompat="@drawable/logout_icon"/>
     </LinearLayout>
 
 

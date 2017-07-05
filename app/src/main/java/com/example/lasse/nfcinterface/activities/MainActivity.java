@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements NetworkUtils.Resp
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
 
         preferences = getSharedPreferences(getString(R.string.sharedPrefsKey), Context.MODE_PRIVATE);
+        if(preferences.contains(NetworkUtils.UID_FIELD)) startActivity(new Intent(MainActivity.this,ProfileActivity.class));
 
         buttonConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
