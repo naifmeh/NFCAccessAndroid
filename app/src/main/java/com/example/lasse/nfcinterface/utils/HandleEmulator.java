@@ -16,9 +16,11 @@ public class HandleEmulator {
     public static final String UID_EMULATED = "54665255";
     private static SharedPreferences sharedPreferences;
     public static final String getUidFromSharedPrefs(Context context) {
+        String uid = "";
         sharedPreferences = context.getSharedPreferences(context.getString(R.string.sharedPrefsKey),Context.MODE_PRIVATE);
-        if(sharedPreferences == null || !sharedPreferences.contains(NetworkUtils.UID_FIELD)) return null;
-        String uid = sharedPreferences.getString(NetworkUtils.UID_FIELD,"");
+        if(!sharedPreferences.contains(HandleEmulator.IS_EMULATED)) return "";
+        else if(sharedPreferences.getBoolean(HandleEmulator.IS_EMULATED,false))
+            uid = sharedPreferences.getString(NetworkUtils.UID_FIELD,"");
         return uid;
     }
 }

@@ -86,5 +86,8 @@
     <string name="aiddescription">aiddescription</string>
     <string name="servicedesc">servicedesc</string>
 
+    <string name="nfcLinkBroken">The NFC link has been broken</string>
+    <string name="cardNowEmulated">Your UID is now continuously emulated</string>
+    <string name="cardNotEmulated">Your UID is not emulated anymore</string>
 
 </resources>

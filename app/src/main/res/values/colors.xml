@@ -4,5 +4,7 @@
     <color name="colorPrimaryDark">#005005</color>
     <color name="colorAccent">#1e88e5</color>
 
+    <color name="colorEmulateTrue">@android:color/holo_green_dark</color>
+    <color name="colorEmulateFalse">@android:color/holo_red_dark</color>
     <color name="backgroundActAddUsr">#9e9e9e</color>
 </resources>

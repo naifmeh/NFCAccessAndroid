@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.nfc.cardemulation.HostApduService;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.lasse.nfcinterface.R;
 import com.example.lasse.nfcinterface.utils.HandleEmulator;
@@ -110,6 +111,8 @@ public class MyHostApduService extends HostApduService {
 
     @Override
     public void onDeactivated(int reason) {
-        Log.i("HCEDEMO", "Deactivated: " + reason);
+
+        Log.i(TAG, "Deactivated: " + reason);
+        Toast.makeText(getApplicationContext(),getString(R.string.nfcLinkBroken),Toast.LENGTH_SHORT).show();
     }
 }
