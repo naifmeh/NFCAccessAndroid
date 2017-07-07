@@ -104,6 +104,7 @@ public class MyHostApduService extends HostApduService {
                 return  ConcatArrays(uidBytes,SELECT_OK_SW);
             else return UNKNOWND_CMD_SW;
         } else {
+            Toast.makeText(getApplicationContext(),getString(R.string.notConnected),Toast.LENGTH_SHORT).show();
             return UNKNOWND_CMD_SW;
         }
 

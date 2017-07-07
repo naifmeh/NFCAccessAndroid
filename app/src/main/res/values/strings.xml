@@ -89,5 +89,6 @@
     <string name="nfcLinkBroken">The NFC link has been broken</string>
     <string name="cardNowEmulated">Your UID is now continuously emulated</string>
     <string name="cardNotEmulated">Your UID is not emulated anymore</string>
+    <string name="notConnected">You are not connected to emulate your card</string>
 
 </resources>
