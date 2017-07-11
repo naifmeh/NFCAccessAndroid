@@ -30,12 +30,16 @@ public class ProfileActivity extends AppCompatActivity {
     private ImageButton cloudButton,addUserButton,emulateButton,logOutButton;
 
     private ImageView oneStarImg,twoStarImg,threeStarImg,fourStarImg;
-
+    private SharedPreferences sharedPreferences;
     private String uidUser,nameUser,lastNameUser;
     private int rankUser;
 
 
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(sharedPreferences == null && !sharedPreferences.contains(NetworkUtils.UID_FIELD)) startActivity(new Intent(ProfileActivity.this,MainActivity.class));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +62,8 @@ public class ProfileActivity extends AppCompatActivity {
         threeStarImg = (ImageView) findViewById(R.id.threeStarImg);
         fourStarImg = (ImageView) findViewById(R.id.fourStarImg);
 
-        final SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.sharedPrefsKey), Context.MODE_PRIVATE);
-        if(sharedPreferences == null && !sharedPreferences.contains(NetworkUtils.UID_FIELD)) startActivity(new Intent(ProfileActivity.this,MainActivity.class));
+        sharedPreferences = getSharedPreferences(getString(R.string.sharedPrefsKey), Context.MODE_PRIVATE);
+
 
         uidUser = sharedPreferences.getString(NetworkUtils.UID_FIELD,getString(R.string.errorNotConnected));
         nameUser = sharedPreferences.getString(NetworkUtils.NAME_FIELD,getString(R.string.errorNotConnected));
@@ -141,4 +145,6 @@ public class ProfileActivity extends AppCompatActivity {
                 break;
         }
     }
+
+
 }

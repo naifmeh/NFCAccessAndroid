@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.lasse.nfcinterface.activities.AlterUserActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarAlterCard"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="@string/alterUserToolbar"
+            app:titleTextColor="@android:color/white"/>
+    <android.support.v7.widget.LinearLayoutCompat
+        android:id="@+id/container_form_addUsr"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/alter_uid_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/editTextAddUsrMargin"
+
+            >
+            <EditText
+                android:id="@+id/alter_uid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/addUsrUID"
+                tools:text="UID"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/alter_name_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/editTextAddUsrMargin"
+
+            >
+            <EditText
+                android:id="@+id/alter_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/addUsrName"
+                tools:text="Name"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/alter_lname_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/editTextAddUsrMargin"
+
+            >
+            <EditText
+                android:id="@+id/alter_lname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/addUsrLastName"
+                tools:text="Last Name"/>
+        </android.support.design.widget.TextInputLayout>
+
+
+        <Spinner
+            android:id="@+id/AlterRankSpinnerUsr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/editTextAddUsrMargin"
+
+            />
+
+        <Button
+            android:id="@+id/btnAlterUsr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/editTextAddUsrMargin"
+            android:background="@color/colorPrimary"
+            android:text="@string/addUsrBtn"
+            android:textColor="@android:color/white"/>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements NetworkUtils.Resp
     @Override
     protected void onStart() {
         super.onStart();
-
+        if(preferences.contains(NetworkUtils.UID_FIELD)) startActivity(new Intent(MainActivity.this,ProfileActivity.class));
         nfcAdapter.enableReaderMode(this, new MyMainNfcListener(), NfcAdapter.FLAG_READER_SKIP_NDEF_CHECK | NfcAdapter.FLAG_READER_NFC_A, null);
     }
 
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements NetworkUtils.Resp
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
 
         preferences = getSharedPreferences(getString(R.string.sharedPrefsKey), Context.MODE_PRIVATE);
-        if(preferences.contains(NetworkUtils.UID_FIELD)) startActivity(new Intent(MainActivity.this,ProfileActivity.class));
+
 
         buttonConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements NetworkUtils.Resp
                     editor.putString(NetworkUtils.LAST_NAME_FIELD, lastName);
                     editor.putInt(NetworkUtils.RANK_FIELD, rank);
                     editor.commit();
-                    Snackbar.make(linearLayout,R.string.welcomeUser,Snackbar.LENGTH_LONG).addCallback(new Snackbar.Callback() {
+                    Snackbar.make(linearLayout,R.string.welcomeUser,Snackbar.LENGTH_SHORT).addCallback(new Snackbar.Callback() {
                         @Override
                         public void onDismissed(Snackbar transientBottomBar, int event) {
                             switch(event) {
@@ -164,5 +164,6 @@ public class MainActivity extends AppCompatActivity implements NetworkUtils.Resp
         }
 
     }
+
 
 }

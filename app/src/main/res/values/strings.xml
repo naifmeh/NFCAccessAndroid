@@ -70,7 +70,6 @@
     <string name="errorPrivilege">You don\'t have the nescessary privileges</string>
 
 
-
     <string name="databaseDisplayTitle">Users in database</string>
 
     <string name="rankDisplayRecycler">Rank</string>
@@ -90,5 +89,7 @@
     <string name="cardNowEmulated">Your UID is now continuously emulated</string>
     <string name="cardNotEmulated">Your UID is not emulated anymore</string>
     <string name="notConnected">You are not connected to emulate your card</string>
+
+    <string name="alterUserToolbar">Modify user data</string>
 
 </resources>

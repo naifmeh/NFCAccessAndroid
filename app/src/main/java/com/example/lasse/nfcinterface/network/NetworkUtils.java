@@ -37,8 +37,8 @@ public class NetworkUtils {
     public static final String POST_JSON_RESPONSE_FIELD = "reponse";
     private static final String TAG = NetworkUtils.class.getSimpleName();
     private static final String SCHEME = "http";
-    private static final String DYNAMIC_REST_URL = "192.168.1.13:8080";
-    private static final String PORT = "8080";
+    private static final String DYNAMIC_REST_URL = "179.106.217.220:8080";
+
     private static final String PROJECT_NAME = "RestTest";
     private static final String REST_PATH = "webapi";
     private static final String REST_ACCESS = "nfcaccess";
@@ -189,7 +189,7 @@ public class NetworkUtils {
                 NetworkResponse networkResponse = error.networkResponse;
 
                 Log.d(TAG,"ERROR ----- "+error.getMessage());
-                if(networkResponse.statusCode == HTTP_STATUS_CONFLICT) reponse[0] = -1;
+                if( networkResponse != null && networkResponse.statusCode == HTTP_STATUS_CONFLICT) reponse[0] = -1;
                 else reponse[0] = -2;
                 callback.reponseHttpPostRequete(reponse[0]);
             }

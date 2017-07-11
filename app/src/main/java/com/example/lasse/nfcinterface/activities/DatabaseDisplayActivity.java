@@ -163,45 +163,52 @@ public class DatabaseDisplayActivity extends AppCompatActivity implements Networ
             if(this.jsonObjArray != null) {
                 try {
                     holder.uid.setText(jsonObjArray.get(position).getString(NetworkUtils.UID_FIELD));
-                    Log.d(TAG,"POSITION -- "+position);
+                    Log.d(TAG, "POSITION -- " + position);
                     holder.name.setText(jsonObjArray.get(position).getString(NetworkUtils.NAME_FIELD));
                     holder.lastName.setText(jsonObjArray.get(position).getString(NetworkUtils.LAST_NAME_FIELD));
+
                     holder.rank.setText(jsonObjArray.get(position).getString(NetworkUtils.RANK_FIELD));
+                    if (sharedPreferences != null
+                            && sharedPreferences.getInt(NetworkUtils.RANK_FIELD, 0)
+                            <= Integer.parseInt(jsonObjArray.get(position).getString(NetworkUtils.RANK_FIELD))) {
 
-                    holder.deleteButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            final int pos = holder.getAdapterPosition();
-                            final JSONObject tempJson = jsonArray.get(pos);
-                            jsonArray.remove(pos);
-                            notifyItemRemoved(pos);
-                            Snackbar.make(view,R.string.userDeletedSnackbar,Snackbar.LENGTH_LONG)
-                                    .addCallback(new Snackbar.Callback() {
-                                        @Override
-                                        public void onDismissed(Snackbar transientBottomBar, int event) {
-                                            int position = holder.getAdapterPosition();
-                                            switch(event) {
-                                                case Snackbar.Callback.DISMISS_EVENT_ACTION:
-                                                    jsonArray.add(pos,tempJson);
-                                                    notifyItemInserted(pos);
-                                                    break;
-                                                default:
-                                                    URL url = NetworkUtils.getUrlForDelete(holder.uid.getText().toString().trim());
-                                                    NetworkUtils.sendDeleteUserRequest(DatabaseDisplayActivity.this,url,DatabaseDisplayActivity.this);
+                        holder.deleteButton.setVisibility(View.INVISIBLE);
+                    } else {
+                        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                final int pos = holder.getAdapterPosition();
+                                final JSONObject tempJson = jsonArray.get(pos);
+                                jsonArray.remove(pos);
+                                notifyItemRemoved(pos);
+                                Snackbar.make(view, R.string.userDeletedSnackbar, Snackbar.LENGTH_LONG)
+                                        .addCallback(new Snackbar.Callback() {
+                                            @Override
+                                            public void onDismissed(Snackbar transientBottomBar, int event) {
+                                                int position = holder.getAdapterPosition();
+                                                switch (event) {
+                                                    case Snackbar.Callback.DISMISS_EVENT_ACTION:
+                                                        jsonArray.add(pos, tempJson);
+                                                        notifyItemInserted(pos);
+                                                        break;
+                                                    default:
+                                                        URL url = NetworkUtils.getUrlForDelete(holder.uid.getText().toString().trim());
+                                                        NetworkUtils.sendDeleteUserRequest(DatabaseDisplayActivity.this, url, DatabaseDisplayActivity.this);
 
-                                                    break;
+                                                        break;
+                                                }
                                             }
-                                        }
-                                    }).setAction(R.string.undoSnackBar, new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
+                                        }).setAction(R.string.undoSnackBar, new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
 
-                                }
-                            }).show();
+                                    }
+                                }).show();
 
-                            mAdapter.notifyItemRangeChanged(pos,mAdapter.getItemCount());
-                        }
-                    });
+                                mAdapter.notifyItemRangeChanged(pos, mAdapter.getItemCount());
+                            }
+                        });
+                }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
