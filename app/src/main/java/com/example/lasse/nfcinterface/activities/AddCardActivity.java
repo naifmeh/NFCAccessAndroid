@@ -174,7 +174,7 @@ public class AddCardActivity extends AppCompatActivity implements NetworkUtils.R
             Snackbar.make(coordinatorLayout,getResources().getString(R.string.snackbar_usr_conflict),Snackbar.LENGTH_LONG).show();
         }
         else Snackbar.make(coordinatorLayout,getResources().getString(R.string.snackbar_usr_failed),Snackbar.LENGTH_LONG).show();
-    }
+    } //TODO : fix user already in db continuous display
 
     @Override
     public void reponseHttpGetAllRequete(JSONObject jObj) {

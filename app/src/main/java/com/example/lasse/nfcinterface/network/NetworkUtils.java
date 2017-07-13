@@ -37,7 +37,7 @@ public class NetworkUtils {
     public static final String POST_JSON_RESPONSE_FIELD = "reponse";
     private static final String TAG = NetworkUtils.class.getSimpleName();
     private static final String SCHEME = "http";
-    private static final String DYNAMIC_REST_URL = "179.106.217.220:8080";
+    private static final String DYNAMIC_REST_URL = "179.106.217.241:9191";
 
     private static final String PROJECT_NAME = "RestTest";
     private static final String REST_PATH = "webapi";
